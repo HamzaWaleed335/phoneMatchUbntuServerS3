@@ -7,7 +7,7 @@ import { stringify } from 'csv-stringify/sync'; // Ensure this is imported
 
 export const dashboard = async (req, res) => {
   const { page = 1 } = req.query;
-  const limit = 1;
+  const limit = 10;
   const offset = (page - 1) * limit;
 
   const data = await withConn(async (conn) => {
