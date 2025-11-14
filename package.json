@@ -4,10 +4,10 @@
   "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/app.js",                
-    "start": "node src/app.js",                  
-    "prod": "pm2 start src/app.js --name phone-matcher --env production",  
-    "build": "echo 'Building the app...'"         
+    "dev": "nodemon src/app.js",
+    "start": "node src/app.js",
+    "prod": "pm2 start src/app.js --name phone-matcher --env production",
+    "build": "echo 'Building the app...'"
   },
   "dependencies": {
     "aws-sdk": "^2.1692.0",
@@ -34,7 +34,7 @@
     "slugify": "^1.6.6",
     "uuid": "^9.0.1",
     "xlsx": "^0.18.5",
-    "pm2": "^5.1.0"  // Added PM2 as a dependency to handle process management
+    "pm2": "^5.1.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.7"
