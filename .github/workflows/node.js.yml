@@ -2,8 +2,8 @@ name: Node.js CI & Deployment
 
 on:
   push:
-    branches: 
-      - master  # Change this if you're using a different branch (like main)
+    branches:
+      - master  # Trigger only on the 'master' branch (or 'main' depending on your setup)
   pull_request:
     branches:
       - master
@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: [18.x]  # You can expand this list if needed
 
     steps:
     - name: Checkout code
@@ -27,16 +27,15 @@ jobs:
         cache: 'npm'
 
     - name: Install dependencies
-      run: npm ci
+      run: npm i  # Install the dependencies using npm
+
+    - name: Create .env file with secret
+      run: |
+        touch .env  # Create the .env file
+        echo "${{ secrets.DATA_PIPELINE_SERVICE_ENV }}" > .env  # Set the secret environment variable
 
     - name: Run build (if present)
-      run: npm run build --if-present
+      run: npm run build --if-present  # Run the build script if it exists
 
-    - name: Deploy to Server
-      if: github.ref == 'refs/heads/master'  # Ensure deployment happens only on the master branch
-      run: |
-        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ubuntu@your_server_ip "
-          cd /var/www/phoneMatchUbntuServerS3 && git pull origin master && npm install && pm2 restart phone-matcher
-        "
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: Run production environment
+      run: npm run prod  # Run the 'prod' script that starts PM2 with your app
