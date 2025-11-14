@@ -4,10 +4,10 @@
   "main": "src/app.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/app.js",                 // For development: uses nodemon to restart on file changes
-    "start": "node src/app.js",                  // For starting the app normally (used for prod)
-    "prod": "pm2 start src/app.js --name phone-matcher --env production",  // Starts app in production with PM2
-    "build": "echo 'Building the app...'"         // You can modify this to run build scripts if needed (like TypeScript or Webpack)
+    "dev": "nodemon src/app.js",                
+    "start": "node src/app.js",                  
+    "prod": "pm2 start src/app.js --name phone-matcher --env production",  
+    "build": "echo 'Building the app...'"         
   },
   "dependencies": {
     "aws-sdk": "^2.1692.0",
