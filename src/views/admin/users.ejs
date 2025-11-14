@@ -1,0 +1,36 @@
+<% layout('layout') -%>
+<h3>Users</h3>
+
+<% layout('layout') -%>
+<h3>Users</h3>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>ID</th><th>Email</th><th>Role</th>
+      <th>Timeless</th>
+      <th>Joined</th><th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% users.forEach(u => { %>
+    <tr>
+      <td><%= u.id %></td>
+      <td><%= u.email %></td>
+      <td><%= u.role %></td>
+      <td>
+        <form method="post" action="/admin/users/<%= u.id %>/timeless">
+          <span class="badge <%= u.timeless_access === 1 ? 'bg-success' : 'bg-secondary' %>">
+            <%= u.timeless_access === 1 ? 'ON' : 'OFF' %>
+          </span>
+          <button class="btn btn-sm <%= u.timeless_access === 1 ? 'btn-warning' : 'btn-success' %> ms-2">
+            <%= u.timeless_access === 1 ? 'Disable' : 'Enable' %>
+          </button>
+        </form>
+      </td>
+      <td><%= new Date(u.created_at).toLocaleString() %></td>
+      <td><a class="btn btn-sm btn-outline-primary" href="/admin/users/<%= u.id %>/files">View Files</a></td>
+    </tr>
+  <% }) %>
+  </tbody>
+</table>

@@ -1,0 +1,201 @@
+/* ===========================
+   Polished Dark UI — Final Styles
+   (Drop-in replacement for styles.css)
+   =========================== */
+
+/* Theme */
+:root{
+  --bg-0:#070b1a;
+  --bg-1:#0b1020;
+  --bg-2:#0f1730;
+
+  --panel:#0f1730e6;      /* high contrast card/panel */
+  --panel-soft:#0f1730b3;
+  --stroke:rgba(255,255,255,.10);
+  --soft:rgba(255,255,255,.08);
+
+  --brand:#6aa4ff;
+  --brand-2:#7c5cff;
+
+  --text:#eef2f9;         /* brighter */
+  --muted:#b7c2da;        /* brighter */
+  --muted-2:#9aa7c1;
+
+  --accent:#22c55e;
+  --danger:#ef4444;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,0.18), transparent 60%),
+    radial-gradient(1200px 600px at 0% 0%, rgba(106,164,255,0.22), transparent 55%),
+    linear-gradient(180deg, var(--bg-0), var(--bg-1) 35%, var(--bg-2) 100%);
+  color: var(--text);
+}
+
+/* Navbar */
+.app-navbar{
+  background: linear-gradient(90deg, #101828 0%, #0c1224 100%);
+  border-bottom: 1px solid var(--soft);
+  backdrop-filter: saturate(120%) blur(6px);
+}
+.navbar-brand .brand-badge{
+  display:inline-grid; place-items:center;
+  width:28px;height:28px;border-radius:8px;
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  font-weight:800; color:#fff; letter-spacing:.5px; font-size:13px;
+}
+.nav-link{opacity:1}
+
+/* Hero band */
+.app-hero{
+  border-bottom: 1px solid var(--soft);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+}
+
+/* Make Bootstrap .bg-light work on dark theme (homepage hero panel) */
+.bg-light{
+  background: rgba(255,255,255,0.08) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--stroke);
+}
+.bg-light .display-5, .bg-light .display-4, .bg-light p{ color: var(--text) !important; opacity:.98 }
+.bg-light .btn{filter:saturate(110%)}
+
+/* Cards */
+.card{
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  border-radius: 1rem;
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+}
+.card .card-title{ color: var(--text); opacity:.95 }
+.card .display-6, .card .display-5{ color: var(--text); opacity:.95 }
+
+/* ---------- Tables (Global base) ---------- */
+.table{
+  color: var(--text);
+  border-color: var(--soft);
+  background: transparent;
+}
+.table tbody td, .table tbody th{
+  color: var(--text);
+  border-color: rgba(255,255,255,0.06);
+}
+.table a{
+  color:#9ec5ff;
+  text-decoration:none;
+}
+.table a:hover{ text-decoration:underline }
+
+/* ---------- Numbers list: Blue-only theme ---------- */
+/* Header: soft blue band (no white) */
+.table thead th{
+  background: linear-gradient(180deg, rgba(60,90,160,0.35), rgba(40,65,120,0.30)) !important;
+  color: #cfe3ff !important;
+  font-weight:700 !important;
+  border-bottom-color: rgba(160,190,255,0.18) !important;
+}
+
+/* Rows: two subtle blue shades (no white rows) */
+.table tbody tr > *{
+  background-color: rgba(24,38,80,0.22) !important;   /* base blue */
+  border-color: rgba(160,190,255,0.10) !important;
+  color: #e9f0ff !important;
+}
+.table-striped > tbody > tr:nth-of-type(odd) > *{
+  background-color: rgba(30,52,105,0.28) !important;  /* darker blue */
+}
+
+/* Hover: brighten row with blue glow */
+.table-hover tbody tr:hover > *{
+  background-color: rgba(76,117,190,0.32) !important;
+}
+
+/* Links inside rows: lighter blue for readability */
+.table a{ color:#b9d2ff !important; }
+.table a:hover{ color:#d8e6ff !important; }
+
+/* Forms */
+.form-control, .form-select{
+  background: rgba(255,255,255,0.06);
+  border:1px solid var(--stroke);
+  color: var(--text);
+  border-radius: .9rem;
+}
+.form-control:focus, .form-select:focus{
+  box-shadow: 0 0 0 .2rem rgba(122,163,255,.28);
+  border-color: #a9c4ff;
+}
+label.form-label{ color: var(--muted) }
+input.form-control::placeholder{ color: var(--muted-2) }
+
+/* Buttons */
+.btn{ border-radius: .9rem; }
+.btn-primary{
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  border:none; color:#fff;
+}
+.btn-primary:hover{ filter: brightness(1.08) }
+.btn-outline-success{
+  color: var(--accent);
+  border-color: rgba(34,197,94,.45);
+  background: transparent;
+}
+.btn-outline-success:hover{ color:#fff; background:var(--accent); border-color:var(--accent) }
+.btn-danger{
+  background: linear-gradient(135deg, #ff6b6b, #ef4444);
+  border:none;
+}
+
+/* Alerts */
+.alert.soft{
+  background: rgba(255,255,255,0.08);
+  border: 1px solid var(--soft);
+  color: var(--text);
+}
+
+/* Progress */
+.progress{
+  background: rgba(255,255,255,0.08);
+  border:1px solid var(--soft);
+  border-radius: .9rem;
+  height: 12px;
+}
+.progress-bar{
+  border-radius: .9rem;
+  background: linear-gradient(90deg, var(--brand), var(--brand-2));
+}
+
+/* Pagination */
+.pagination .page-link{
+  background: rgba(255,255,255,0.06);
+  border-color: var(--soft);
+  color: var(--text);
+}
+.pagination .page-item.active .page-link{
+  background: linear-gradient(135deg, var(--brand), var(--brand-2));
+  border:none;
+}
+
+/* Code & links */
+a{ color:#9ec5ff }
+a:hover{ color:#c7dcff }
+code{ color:#b9d2ff }
+
+/* Footer */
+.app-footer{
+  border-top:1px solid var(--soft);
+  padding: 20px 0;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,.18));
+}
+
+/* Utilities */
+.text-muted{ color: var(--muted) !important }
+.rounded-xl{ border-radius: 1rem !important }
+.shadow-soft{ box-shadow: 0 12px 32px rgba(0,0,0,.35) }
+tr, td, th{ color: inherit }  /* legibility on dark rows */

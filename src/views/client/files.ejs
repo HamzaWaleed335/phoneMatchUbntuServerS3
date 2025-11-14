@@ -1,0 +1,19 @@
+<% layout('layout') -%>
+<h3>My Files</h3>
+<table class="table table-striped">
+<thead>
+<tr><th>Date</th><th>Original</th><th>Output</th><th>Records</th><th>Clean</th><th></th></tr>
+</thead>
+<tbody>
+<% files.forEach(f => { %>
+<tr>
+<td><%= new Date(f.created_at).toLocaleString() %></td>
+<td><%= f.original_filename %></td>
+<td><%= f.stored_filename %></td>
+<td><%= f.record_count %></td>
+<td><%= f.unmatched_count %></td>
+<td><a class="btn btn-sm btn-outline-success" href="/client/download/<%= f.id %>">Download</a></td>
+</tr>
+<% }) %>
+</tbody>
+</table>

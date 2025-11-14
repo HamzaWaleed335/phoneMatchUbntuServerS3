@@ -1,0 +1,29 @@
+<% layout('layout') -%>
+<h3>User Files – <%= user.email %></h3>
+<a href="/admin/users" class="btn btn-sm btn-secondary mb-3">← Back</a>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Created</th>
+      <th>Original</th>
+      <th>Output</th>
+      <th>Total</th>
+      <th>Clean</th>
+      <th>Download</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% files.forEach(f => { %>
+      <tr>
+        <td><%= new Date(f.created_at).toLocaleString() %></td>
+        <td><%= f.original_filename %></td>
+        <td><code><%= f.stored_filename %></code> (<%= f.output_format %>)</td>
+        <td><%= f.record_count %></td>
+        <td><%= f.unmatched_count %></td>
+<td><a class="btn btn-sm btn-outline-success" href="<%= f.output_path %>">Download</a></td>
+
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

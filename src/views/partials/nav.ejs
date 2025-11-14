@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container-fluid">
+<a class="navbar-brand" href="/">PhoneMatcher</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<% if (user) { %>
+<% if (user.role === 'admin') { %>
+<li class="nav-item"><a class="nav-link" href="/admin">Dashboard</a></li>
+<li class="nav-item"><a class="nav-link" href="/admin/upload">Upload</a></li>
+<li class="nav-item"><a class="nav-link" href="/admin/numbers">Numbers</a></li>
+<li class="nav-item"><a class="nav-link" href="/admin/users">Users & Files</a></li>
+<% } else { %>
+<li class="nav-item"><a class="nav-link" href="/client">Dashboard</a></li>
+<li class="nav-item"><a class="nav-link" href="/client/upload">Upload</a></li>
+<!-- <li class="nav-item"><a class="nav-link" href="/client/files">My Files</a></li> -->
+<% } %>
+<% } %>
+</ul>
+<ul class="navbar-nav">
+<% if (!user) { %>
+<li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+<li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+<% } else { %>
+<li class="nav-item"><span class="navbar-text me-3"><%= user.email %></span></li>
+<li class="nav-item">
+<form method="post" action="/logout">
+<button class="btn btn-outline-light btn-sm">Logout</button>
+</form>
+</li>
+<% } %>
+</ul>
+</div>
+</div>
+</nav>
